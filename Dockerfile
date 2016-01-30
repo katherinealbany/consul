@@ -10,7 +10,7 @@ MAINTAINER Katherine Albany
 
 RUN apt-get update                                                                                \
  && DEBIAN_FRONTEND=noninteractive                                                                \
-    apt-get install --no-install-recommends --quiet --yes                                         \
+    apt-get install --no-install-recommends -y                                                    \
     ca-certificates                                                                               \
     wget
 
@@ -26,8 +26,8 @@ ENV SHA256 fd8bbbb0125f58990004bcd96fb16afb2ae5d30f157f64bd7dd298df74b03b48
 
 ###################################################################################################
 
-RUN wget --progress=dot:binary --output-document=- ${URL} | uncompress > consul                   \
- && echo "${SHA256} consul" | sha256sum --strict --check --quiet                                  \
+RUN wget --progress=dot:binary -O - ${URL} | uncompress > consul                                  \
+ && echo "${SHA256} consul" | sha256sum --strict --check                                          \
  && chown ${USER}:${USER} consul                                                                  \
  && chmod 700 consul
 
