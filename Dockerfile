@@ -8,8 +8,11 @@ MAINTAINER Katherine Albany
 
 ###################################################################################################
 
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install --no-install-recommends --quiet --yes ca-certificates wget
+RUN apt-get update                                                                                \
+ && DEBIAN_FRONTEND=noninteractive                                                                \
+    apt-get install --no-install-recommends --quiet --yes                                         \
+    ca-certificates                                                                               \
+    wget
 
 ###################################################################################################
 
