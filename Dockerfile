@@ -8,8 +8,8 @@ MAINTAINER Katherine Albany
 
 ###################################################################################################
 
-ENV URL    https://releases.hashicorp.com/consul/0.6.0/consul_0.6.0_linux_amd64.zip
-ENV SHA256 a9dea30279a6213cda60791f0276be79fb535600aa62990e4201eec7dae4709f
+ENV URL    https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_linux_amd64.zip
+ENV SHA256 fd8bbbb0125f58990004bcd96fb16afb2ae5d30f157f64bd7dd298df74b03b48
 
 ###################################################################################################
 
