@@ -8,11 +8,6 @@ MAINTAINER Katherine Albany
 
 ###################################################################################################
 
-ENV URL    https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_linux_amd64.zip
-ENV SHA256 fd8bbbb0125f58990004bcd96fb16afb2ae5d30f157f64bd7dd298df74b03b48
-
-###################################################################################################
-
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install --no-install-recommends --quiet --yes ca-certificates wget
 
@@ -23,8 +18,13 @@ WORKDIR ${HOME}
 
 ###################################################################################################
 
+ENV URL    https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_linux_amd64.zip
+ENV SHA256 fd8bbbb0125f58990004bcd96fb16afb2ae5d30f157f64bd7dd298df74b03b48
+
+###################################################################################################
+
 RUN wget --progress=dot:binary --output-document=- ${URL} | uncompress > consul                   \
- && echo "${SHA256} consul" | sha256sum -c                                                        \
+ && echo "${SHA256} consul" | sha256sum --strict --check --quiet                                  \
  && chown ${USER}:${USER} consul                                                                  \
  && chmod 700 consul
 
